@@ -1,29 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Healthbars />
+    <Actions />
+    <ActionLog />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import * as styles from './styles/app.module.css';
+import Healthbars from './components/Healthbars';
+import Actions from './components/Actions';
+import ActionLog from './components/ActionLog';
+import './styles/app.css';
+import './styles/foundation.min.css';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    Healthbars,
+    Actions,
+    ActionLog,
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
