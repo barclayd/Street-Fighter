@@ -6,8 +6,10 @@
         <div class="healthbar">
           <div
             class="healthbar text-center"
-            style="background-color: green; margin: 0; color: white;"
-          ></div>
+            :style="displayHealth(playerHealth)"
+          >
+            {{ playerHealth }}
+          </div>
         </div>
       </div>
       <div class="small-6 columns">
@@ -15,8 +17,10 @@
         <div class="healthbar">
           <div
             class="healthbar text-center"
-            style="background-color: green; margin: 0; color: white;"
-          ></div>
+            :style="displayHealth(opponentHealth)"
+          >
+            {{ opponentHealth }}
+          </div>
         </div>
       </div>
     </section>
@@ -25,7 +29,13 @@
 
 <script>
 export default {
-  name: 'Healthbar',
+  name: 'Healthbars',
+  props: ['player-health', 'opponent-health'],
+  methods: {
+    displayHealth(user) {
+      return [{backgroundColor: 'green', margin: 0, color: 'white'}, {width: user + '%'}]
+    }
+  }
 };
 </script>
 
