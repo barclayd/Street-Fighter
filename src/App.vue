@@ -12,14 +12,12 @@
       :player-health="playerHealth"
       :opponent-health="opponentHealth"
     />
-    <actionLog />
   </div>
 </template>
 
 <script>
 import Healthbars from './components/Healthbars';
 import Actions from './components/Actions';
-import ActionLog from './components/ActionLog';
 import './styles/app.css';
 import './styles/foundation.min.css';
 
@@ -28,7 +26,6 @@ export default {
   components: {
     Healthbars,
     Actions,
-    ActionLog,
   },
   data() {
     return {
@@ -43,14 +40,15 @@ export default {
       if (status) {
         this.playerHealth = 100;
         this.opponentHealth = 100;
-      }},
+      }
+    },
     onUpdateHealth(char, damage) {
-      if (char === 'player' && this.playerHealth > 0) {
+      if (char === 'player' && this.playerHealth > 0 && this.opponentHealth > 0) {
         this.playerHealth -= damage;
         if (this.playerHealth < 0) {
           this.playerHealth = 0;
         }
-      } else if (char === 'opponent' && this.opponentHealth > 0) {
+      } else if (char === 'opponent' && this.opponentHealth > 0 && this.playerHealth > 0) {
         this.opponentHealth -= damage;
         if (this.opponentHealth < 0) {
           this.opponentHealth = 0;
@@ -69,7 +67,7 @@ export default {
           this.opponentHealth = 100;
         }
       }
-    }
+    },
   },
 };
 </script>
