@@ -33,14 +33,17 @@ export default {
   data() {
     return {
       isRunning: false,
-      playerHealth: 80,
+      playerHealth: 100,
       opponentHealth: 100,
     };
   },
   methods: {
     onUpdateGameStatus(status) {
       this.isRunning = status;
-    },
+      if (status) {
+        this.playerHealth = 100;
+        this.opponentHealth = 100;
+      }},
     onUpdateHealth(char, damage) {
       if (char === 'player' && this.playerHealth > 0) {
         this.playerHealth -= damage;
