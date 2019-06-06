@@ -24,4 +24,4 @@ Open (localhost:8080)[http://localhost:8080/]
 ### Future Improvements
 
 - [ ] More animations
-- [ ] 
+- [ ] Increase game play options

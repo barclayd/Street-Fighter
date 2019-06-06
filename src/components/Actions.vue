@@ -33,10 +33,10 @@
         <button id="give-up" @click="onUpdateGameStatus(false)">GIVE UP</button>
       </div>
     </section>
-    <section class="row log">
+    <section class="row log" v-if="gameLog.length > 0">
       <div class="small-12 columns">
-        <ul :key="index" v-for="(log, index) in gameLog">
-          <li class="row" :style="styling(log.user)">
+        <ul>
+          <li :key="index" v-for="(log, index) in gameLog" class="row" :style="styling(log.user)">
             <p>{{ log.msg }}</p>
           </li>
         </ul>
@@ -175,18 +175,24 @@ button {
   outline: none;
 }
 ul > li > p {
-  font-weight: normal;
-  text-transform: none;
   color: #fff;
+}
+
+ul {
+  padding: 0;
 }
 
 ul > li {
   padding: 5px;
   width: auto;
+  list-style: none;
+  margin-bottom: 10px;
+
 }
 
 .row.log {
   height: 60vh;
+  width: auto;
   overflow-y: scroll;
 }
 </style>
