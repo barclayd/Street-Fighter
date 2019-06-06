@@ -33,9 +33,12 @@ export default {
   props: ['player-health', 'opponent-health'],
   methods: {
     displayHealth(user) {
-      return [{backgroundColor: 'green', margin: 0, color: 'white'}, {width: user + '%'}]
-    }
-  }
+      return [
+        { backgroundColor: 'green', margin: 0, color: 'white' },
+        { width: user + '%' },
+      ];
+    },
+  },
 };
 </script>
 

@@ -43,12 +43,20 @@ export default {
       }
     },
     onUpdateHealth(char, damage) {
-      if (char === 'player' && this.playerHealth > 0 && this.opponentHealth > 0) {
+      if (
+        char === 'player' &&
+        this.playerHealth > 0 &&
+        this.opponentHealth > 0
+      ) {
         this.playerHealth -= damage;
         if (this.playerHealth < 0) {
           this.playerHealth = 0;
         }
-      } else if (char === 'opponent' && this.opponentHealth > 0 && this.playerHealth > 0) {
+      } else if (
+        char === 'opponent' &&
+        this.opponentHealth > 0 &&
+        this.playerHealth > 0
+      ) {
         this.opponentHealth -= damage;
         if (this.opponentHealth < 0) {
           this.opponentHealth = 0;
