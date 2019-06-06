@@ -6,7 +6,7 @@
   width: 80%;
   height: 40px;
   background-color: #eee;
-  margin: auto;
+  margin: auto auto 30px;
   transition: width 500ms;
 }
 
@@ -17,33 +17,6 @@
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 0 3px 6px #ccc;
-}
-
-.turn {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: 22px;
-}
-
-.log ul {
-  list-style: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.log ul li {
-  margin: 5px;
-}
-
-.log ul .player-turn {
-  color: blue;
-  background-color: #e4e8ff;
-}
-
-.log ul .monster-turn {
-  color: red;
-  background-color: #ffc0c1;
 }
 
 button {
