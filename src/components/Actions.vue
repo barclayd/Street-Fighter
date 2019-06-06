@@ -35,9 +35,9 @@
     </section>
     <section class="row log">
       <div class="small-12 columns">
-        <ul v-for="(log, index) in gameLog">
-          <li class="row" :style="styling(index)">
-            <p>{{ log }}</p>
+        <ul :key="index" v-for="(log, index) in gameLog">
+          <li class="row" :style="styling(log.user)">
+            <p>{{ log.msg }}</p>
           </li>
         </ul>
       </div>
@@ -61,28 +61,46 @@ export default {
         setTimeout(() => {
           alert('You win! Opponent is dead. \n Game over!');
         }, 600);
+        this.actionLog(
+          `You defeated the opponent - awesome! Game over!`,
+          'player',
+        );
         this.onUpdateGameStatus(false);
       }
       if (user === 'player' && this.$props.playerHealth - damageTaken <= 0) {
         setTimeout(() => {
-          alert('You lose! Opponent is the winner. \n Game over!');
+          alert('You lose! Opponent beats you in the fight. \n Game over!');
         }, 600);
+        this.actionLog(
+          `Opponent wins as you fall to a crushing defeat! Game Over!`,
+          'opponent',
+        );
         this.onUpdateGameStatus(false);
       }
     },
     onUpdateGameStatus(status) {
       this.$emit('onUpdateGameStatus', status);
+      if (status) {
+        this.gameLog = [];
+      }
+    },
+    actionLog(msg, user) {
+      if (this.$props.isRunning) {
+        this.gameLog.splice(0, 0, { msg, user });
+      }
     },
     heal(char, min, max) {
       const healAmount = Math.max(Math.floor(Math.random() * max) + 1, min);
       this.$emit('onHealUser', char, healAmount);
       if (char === 'player') {
-        this.gameLog.splice(0, 0,
+        this.actionLog(
           `You healed to increase your health by ${healAmount}`,
+          char,
         );
       } else {
-        this.gameLog.splice(0, 0,
+        this.actionLog(
           `Opponent took time to heal themselves by ${healAmount}`,
+          char,
         );
       }
     },
@@ -90,20 +108,22 @@ export default {
       const damage = Math.max(Math.floor(Math.random() * max) + 1, min);
       if (user === 'player' && this.$props.playerHealth >= 0) {
         this.$emit('onUpdateHealth', 'opponent', damage);
-        this.gameLog.splice(0, 0,
+        this.actionLog(
           `User ${move} opponent resulting in damage of ${damage}`,
+          user,
         );
         this.checkWinner('opponent', damage);
       } else if (this.$props.opponentHealth >= 0) {
         this.$emit('onUpdateHealth', 'player', damage);
-        this.gameLog.splice(0, 0,
+        this.actionLog(
           `Opponent retaliated causing you damage of ${damage}`,
+          user,
         );
         this.checkWinner('player', damage);
       }
     },
     styling(idx) {
-      if (idx % 2 === 0) {
+      if (idx === 'player') {
         return {
           backgroundColor: '#34495e',
         };
@@ -162,12 +182,11 @@ ul > li > p {
 
 ul > li {
   padding: 5px;
-    width: auto;
+  width: auto;
 }
 
-    .row.log {
-        height: 60vh;
-        overflow-y: scroll;
-    }
-
+.row.log {
+  height: 60vh;
+  overflow-y: scroll;
+}
 </style>

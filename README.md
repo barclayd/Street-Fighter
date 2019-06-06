@@ -1,29 +1,27 @@
-# street-fighter
+# Street Fighter
 
-## Project setup
-```
-npm install
-```
+Text based version of classic Street Fighter written with Vue.js
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Punch, kick and heal your way to victory against your opponent.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Features
 
-### Run your tests
-```
-npm run test
-```
+- [x] Play against an CPU opponent
+- [x] Options of kick/punch/heal for both user and CPU
+- [x] Dynamic status bars to reflect the health of player and opponent
+- [x] Full game log
+- [x] Full game functionality
 
-### Lints and fixes files
+### How to Run
 ```
-npm run lint
+$ git clone https://github.com/barclayd/Street-Fighter
+$ cd Street-Fighter
+$ npm install
+$ npm run serve
 ```
+Open (localhost:8080)[http://localhost:8080/]
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Future Improvements
+
+- [ ] More animations
+- [ ] 
