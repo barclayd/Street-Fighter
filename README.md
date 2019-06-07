@@ -4,7 +4,7 @@ Text based version of classic Street Fighter written with Vue.js
 
 Punch, kick and heal your way to victory against your opponent.
 
-Deployed [live](https://barclayd.github.io/Street-Fighter)
+Deployed [live](https://barclayd.github.io/Street-Fighter)!
 
 ### Code style
   [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
@@ -33,7 +33,7 @@ $ cd Street-Fighter
 $ npm install
 $ npm run serve
 ```
-Open (localhost:8080)[http://localhost:8080/]
+Open [localhost:8080](http://localhost:8080/)
 
 ### Future Improvements
 
