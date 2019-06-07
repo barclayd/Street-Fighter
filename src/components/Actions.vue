@@ -59,7 +59,7 @@ export default {
         this.$props.opponentHealth - damageTaken <= 0
       ) {
         setTimeout(() => {
-          alert('You win! Opponent is dead. \n Game over!');
+          alert('You win! Opponent is dead. \nGame over!');
         }, 600);
         this.actionLog(
           `You defeated the opponent - awesome! Game over!`,
@@ -69,7 +69,7 @@ export default {
       }
       if (user === 'player' && this.$props.playerHealth - damageTaken <= 0) {
         setTimeout(() => {
-          alert('You lose! Opponent beats you in the fight. \n Game over!');
+          alert('You lose! Opponent beats you in the fight. \nGame over!');
         }, 600);
         this.actionLog(
           `Opponent wins as you fall to a crushing defeat! Game Over!`,
