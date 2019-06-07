@@ -33,8 +33,12 @@ export default {
   props: ['player-health', 'opponent-health'],
   methods: {
     displayHealth(user) {
+      let healthBarColour = 'green';
+      if (user < 20 ) {
+        healthBarColour = '#bb0a1e';
+      }
       return [
-        { backgroundColor: 'green', margin: 0, color: 'white' },
+        { backgroundColor: healthBarColour, margin: 0, color: 'white' },
         { width: user + '%' },
       ];
     },
