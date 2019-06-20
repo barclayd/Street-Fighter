@@ -33,15 +33,24 @@
         <button id="give-up" @click="onUpdateGameStatus(false)">GIVE UP</button>
       </div>
     </section>
-    <section class="row log" v-if="gameLog.length > 0">
-      <div class="small-12 columns">
-        <ul>
-          <li :key="index" v-for="(log, index) in gameLog" class="row" :style="styling(log.user)">
-            <p>{{ log.msg }}</p>
-          </li>
-        </ul>
-      </div>
-    </section>
+    <transition name="fade">
+      <section class="row log" v-if="gameLog.length > 0">
+        <div class="small-12 columns">
+          <ul>
+            <transition-group name="fade">
+              <li
+                :key="index"
+                v-for="(log, index) in gameLog"
+                class="row"
+                :style="styling(log.user)"
+              >
+                <p>{{ log.msg }}</p>
+              </li>
+            </transition-group>
+          </ul>
+        </div>
+      </section>
+    </transition>
   </div>
 </template>
 
@@ -187,12 +196,33 @@ ul > li {
   width: auto;
   list-style: none;
   margin-bottom: 10px;
-
 }
 
 .row.log {
   height: 60vh;
   width: auto;
   overflow-y: scroll;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 1s;
+}
+.fade-leave {
+}
+.fade-leave-active {
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 </style>
